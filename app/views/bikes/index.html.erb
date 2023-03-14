@@ -1,11 +1,15 @@
 <h1>This is my home page with all bike listings</h1>
 <%= link_to "New bike", new_bike_path if policy(Bike).new? %>
 
-<div class="cards">
-  <p><% @bikes.each do |bike| %></p>
-  <p><%= bike.title %></p>
+<div class="cards-grid">
+  <% @bikes.each do |bike| %>
+  <div class="card-category"
+    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path bike.photos.first.key, height: 300, crop: :fill %>')">
+  </div>
+    <div>
+    <p><%= bike.title %></p>
   <p><%= bike.user.first_name %></p>
   <%= link_to 'View This Bike', bike, class: "btn btn-primary" %>
+    </div>
   <% end %>
 </div>
-
