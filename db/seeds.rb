@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+puts "destroying all Users"
+User.destroy_all
+
+puts "adding user"
+User.create!(email: "dereuckkarmen@gmail.com", password: "123456", first_name: "kolawole", last_name: "akinmosin")
+User.create!(email: "hello@gmail.com", password: "123456", first_name: "karmen", last_name: "South Africa" )
+User.create!(email: "samuel@gmail.com", password: "123456", first_name: "leandro", last_name: "america")
+User.create!(email: "paul@gmail.com", password: "123456", first_name: "paul", last_name: "Germany")
+
+puts "Users created"
+
+puts "destroying all bikes"
+Bike.destroy_all
+
+puts "adding bikes"
+Bike.create!(title: "Bike 1", price: 50, location: "London", user: User.first)
+Bike.create!(title: "Bike 2", price: 60, location: "Paris", user: User.second)
+Bike.create!(title: "Bike 3", price: 70, location: "London", user: User.third)
+Bike.create!(title: "Bike 4", price: 80, location: "Germany", user: User.last)
+
+puts "Bikes created"

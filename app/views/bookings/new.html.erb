@@ -1,0 +1,8 @@
+<%= link_to "Back to Bikes", root_path, class: "btn btn-primary" %>
+
+<h1>Book A Bike</h1>
+
+<%= simple_form_for [@bike, @booking] do |f| %>
+  <%= f.input :message %>
+  <%= f.button :submit %>
+<% end %>
