@@ -1,5 +1,6 @@
 class BikesController < ApplicationController
-  before_action :set_bike, only: %i[ show edit update destroy ]
+  before_action :set_bike, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: [:home, :index, :show]
 
   def index
     @bikes = Bike.all
@@ -21,7 +22,6 @@ class BikesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def edit
