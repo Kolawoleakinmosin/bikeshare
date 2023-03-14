@@ -13,6 +13,7 @@ class BikesController < ApplicationController
   end
 
   def create
+    @bike.user = current_user
     @bike = Bike.new(bike_params)
 
     if @bike.save
@@ -35,9 +36,9 @@ class BikesController < ApplicationController
   end
 
   def destroy
-
+    @bike.destroy
+    redirect_to bikes_url, notice: "Bike was successfully destroyed."
   end
-
 
   private
 
