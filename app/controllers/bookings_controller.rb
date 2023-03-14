@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
   def new
     @bike = Bike.find(params[:bike_id])
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
@@ -9,7 +10,8 @@ class BookingsController < ApplicationController
 
     @booking = Booking.new(booking_params)
     @booking.bike = @bike
-
+    @booking.user = current_user
+    authorize @booking
     if @booking.save
       redirect_to bike_path(@bike)
     else
@@ -20,6 +22,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
+    authorize @booking
     @booking.destroy
     redirect_to bike_path(@booking.bike), status: :see_other
   end
