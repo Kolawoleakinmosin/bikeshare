@@ -1,11 +1,15 @@
 <% if current_user %>
-<h1>Welcome <%= current_user.first_name %>, This is Your bike listing page</h1>
+<h1>Welcome <%= current_user.first_name %>, This is <%= @bike.title  %> page</h1>
 <% end %>
+<p><%= @bike.title %></p>
+<p><%= @bike.location%></p>
+<p><%= @bike.price %></p>
+<p><%= @bike.availability %></p>
 
 <% if user_signed_in? %>
-<p><%= "You are signed in, so you are seeing this" %></p>
+<p><%= link_to 'Book', new_bike_booking_path(@bike), class: "btn btn-primary" %></p>
 <% else %>
-<%= "You are not signed in" %>
+<p><%= link_to 'Sign-Up', new_user_registration_path, class: "btn btn-primary" %></p>
 <%# at the link to sign in page %>
 <% end %>
 

@@ -1,0 +1,10 @@
+<h2>Create a new bike</h2>
+
+
+<%= simple_form_for [@bike] do |f| %>
+  <%= f.input :location %>
+  <%= f.input :price%>
+  <%= f.input :availability%>
+  <%= f.input :title%>
+  <%= f.button :submit %>
+<% end %>
