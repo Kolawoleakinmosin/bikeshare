@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+file = Rails.root.join('app', 'assets', 'images', 'bike.jpg')
+
 puts "destroying all Users"
 User.destroy_all
 
@@ -20,9 +22,12 @@ puts "destroying all bikes"
 Bike.destroy_all
 
 puts "adding bikes"
-Bike.create!(title: "Bike 1", price: 50, location: "London", user: User.first)
-Bike.create!(title: "Bike 2", price: 60, location: "Paris", user: User.second)
-Bike.create!(title: "Bike 3", price: 70, location: "London", user: User.third)
-Bike.create!(title: "Bike 4", price: 80, location: "Germany", user: User.last)
-
+bike1 = Bike.create!(title: "Bike 1", price: 50, location: "London", user: User.first)
+bike2 = Bike.create!(title: "Bike 2", price: 60, location: "Paris", user: User.second)
+bike3 = Bike.create!(title: "Bike 3", price: 70, location: "London", user: User.third)
+bike4 = Bike.create!(title: "Bike 4", price: 80, location: "Germany", user: User.last)
+bike1.photos.attach(io: File.open(file), filename: "bike1.jpg", content_type: "image/png")
+bike2.photos.attach(io: File.open(file), filename: "bike2.jpg", content_type: "image/png")
+bike3.photos.attach(io: File.open(file), filename: "bike3.jpg", content_type: "image/png")
+bike4.photos.attach(io: File.open(file), filename: "bike4.jpg", content_type: "image/png")
 puts "Bikes created"

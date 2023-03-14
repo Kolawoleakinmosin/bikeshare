@@ -1,0 +1,10 @@
+<h1>My Bikes</h1>
+
+<div class="cards">
+<% @bikes.each do |bike| %>
+<li> <%= cl_image_tag bike.photos.first.key, width: 400, height: 300, crop: :fill %></li>
+<li> <%= bike.title %> </li>
+<li> <%= bike.location %> </li>
+<li> <%= bike.price %> </li>
+<% end %>
+</div>
