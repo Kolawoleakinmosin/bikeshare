@@ -42,4 +42,7 @@
 .DS_Store
 .env*
 .env*
+<<<<<<< HEAD
+=======
 .env*
+>>>>>>> 2488f30ab69dae4534233aaaccaed68e698f9b9e
