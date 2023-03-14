@@ -3,19 +3,22 @@ class BikesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
 
   def index
-    @bikes = Bike.all
+    @bikes = policy_scope(Bike)
   end
 
   def show
+    authorize @bike
   end
 
   def new
     @bike = Bike.new
+    authorize @bike
   end
 
   def create
-    @bike.user = current_user
     @bike = Bike.new(bike_params)
+    @bike.user = current_user
+    authorize @bike
 
     if @bike.save
       redirect_to @bike, notice: "Bike listing was successfully created."
@@ -25,9 +28,11 @@ class BikesController < ApplicationController
   end
 
   def edit
+    authorize @bike
   end
 
   def update
+    authorize @bike
     if @bike.update(bike_params)
       redirect_to @bike, notice: "Bike listing was successfully updated."
     else
@@ -36,6 +41,7 @@ class BikesController < ApplicationController
   end
 
   def destroy
+    authorize @bike
     @bike.destroy
     redirect_to bikes_url, notice: "Bike was successfully destroyed."
   end

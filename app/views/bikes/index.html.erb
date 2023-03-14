@@ -3,3 +3,5 @@
 <p><%= bike.title %></p>
 <p><%= bike.user.first_name %></p>
 <% end %>
+
+<%= link_to "New bike", new_bike_path if policy(Bike).new? %>
