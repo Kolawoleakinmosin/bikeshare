@@ -6,6 +6,7 @@
 <p><%= "You are signed in, so you are seeing this" %></p>
 <% else %>
 <%= "You are not signed in" %>
+<%# at the link to sign in page %>
 <% end %>
 
 <% if policy(@bike).edit? %>
