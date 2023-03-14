@@ -4,67 +4,72 @@
       <% if policy(@bike).edit? %>
         <%= button_to "Edit this bike", edit_bike_path(@bike), class: "btn btn-primary w-100"  %>
       <% end %>
-      <body class="bg-light">
+    <body class="bg-light">
 
 
     <!-- bike info -->
-    <div class="bg-white">
-      <div class="container p-3">
+    <div class="bg-white m-5">
+      <div class="container p-3 ">
         <div class="row">
           <div class="col-md-8">
             <h3>Hi <%= current_user.first_name %>, you have selected <%= @bike.title  %></h3>
             <p>Please add your dates and confirm all details to proceed with your booking</p>
           </div>
-          <div class="col-md-4">
-            <img src="#" alt="" class="w-100">
-          </div>
         </div>
       </div>
     </div>
+        <% end %>
     <!-- bike info -->
 
-<% end %>
-
-<div class="card" style="width: 30rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Title: <%= @bike.title %></h5>
-    <p class="card-text">
-      <p>Location: <%= @bike.location%></p>
-      <p>Price:<%=@bike.price %></p>
-      <p>Availability:<%= @bike.availability %></p>
+<div class="container">
+  <div class="card rounded shadow" style="width: 22rem;">
+      <img class="card-img-top" src="<%= cl_image_path @bike.photos.first.key, height: 300, crop: :fill %>" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Title: <%= @bike.title %></h5>
+      <p class="card-text">
+        <p>Location: <%= @bike.location%></p>
+        <p>Price:<%=@bike.price %></p>
+        <p>Availability:<%= @bike.availability %></p>
+    </div>
   </div>
-</div>
-    <!-- bike details / booking-->
-    <div class="container py-3">
-      <div class="row">
-        <div class="col-md-8">
+      <!-- bike details / booking-->
+      <div class="container py-3">
+        <div class="row">
+          <div class="col-md-8">
 
-          <!-- turn this into an alert (warning) -->
-          <div class="alert alert-warning" role="alert">
-            Please make sure you have a valid <strong>ID</strong> with you when picking up the bike.
-          </div>
-
-          <h2>Your Bike Details</h2>
-
-        <div class="col-md-4">
-          <!-- checkout -->
-          <div class="bg-white border p-3 sticky-top"><% if user_signed_in? %>
-            <p><%= link_to 'Book', new_bike_booking_path(@bike), class: "btn btn-primary w-100" %></p>
-            <% else %>
-            <p><%= link_to 'Sign-Up', new_user_registration_path, class: "btn btn-primary w-100" %></p>
-            <% end %>
-            <div class="d-flex justify-content-between mt-3 border-bottom">
-              <p><strong>Location:</strong></p>
-              <p><%=@bike.location%></p>
-            </div>
-            <div class="d-flex justify-content-between mt-3">
-              <p><strong><%= @bike.title %></strong></p>
-              <p><strong><%=@bike.price %>$</strong></p>
+            <!-- turn this into an alert (warning) -->
+            <div class="alert alert-warning" role="alert">
+              Please make sure you have a valid <strong>ID</strong> with you when picking up the bike.
             </div>
 
-          </div>
+            <h3>Book this Bike</h3>
 
+          <div class="col-md-6 rounded shadow">
+            <!-- checkout -->
+            <div class="bg-white border p-3 sticky-top"><% if user_signed_in? %>
+              <p><%= link_to 'Book', new_bike_booking_path(@bike), class: "btn btn-primary w-100" %></p>
+              <% else %>
+              <p><%= link_to 'Sign-Up', new_user_registration_path, class: "btn btn-primary w-100" %></p>
+              <% end %>
+              <div class="d-flex justify-content-between mt-3 border-bottom">
+              <%= simple_form_for [@bike, @booking]  do |f| %>
+                <%= f.input :date_start, as: :date %>
+                <%= f.input :date_end, as: :date %>
+                <%= f.button :submit %>
+              <% end %>
+              </div>
+              <div class="d-flex justify-content-between mt-3 border-bottom">
+                <p><strong>Location:</strong></p>
+                <p><%=@bike.location%></p>
+              </div>
+              <div class="d-flex justify-content-between mt-3">
+                <p><strong><%= @bike.title %></strong></p>
+                <p><strong><%=@bike.price %>$</strong></p>
+              </div>
+
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
+</div>
