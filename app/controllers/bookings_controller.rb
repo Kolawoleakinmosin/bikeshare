@@ -5,6 +5,12 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
+  # def bookings
+  #   # people that have booked my bike
+  #   @bikes = current_user.bikes
+  #   # need to iterate over bikes, get bike and its booking
+  # end
+
   def create
     @bike = Bike.find(params[:bike_id])
 

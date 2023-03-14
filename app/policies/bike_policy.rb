@@ -14,6 +14,10 @@ class BikePolicy < ApplicationPolicy
     true
   end
 
+  def mybikes?
+    true
+  end
+
   def create?
     new?
   end

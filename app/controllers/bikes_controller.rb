@@ -6,6 +6,11 @@ class BikesController < ApplicationController
     @bikes = policy_scope(Bike)
   end
 
+  def mybikes
+    @bikes = current_user.bikes
+    authorize @bikes
+  end
+
   def show
     authorize @bike
   end
