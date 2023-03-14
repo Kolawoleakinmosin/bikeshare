@@ -8,3 +8,9 @@
 <%= "You are not signed in" %>
 <%# at the link to sign in page %>
 <% end %>
+
+<% if policy(@bike).edit? %>
+  <%= link_to "Edit this bike", edit_bike_path(@bike) %> |
+<% end %>
+<!-- [...] -->
+<%= button_to "Destroy this bike listing", @bike, method: :delete if policy(@bike).destroy? %>
