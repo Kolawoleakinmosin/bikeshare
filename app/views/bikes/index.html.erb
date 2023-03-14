@@ -2,9 +2,10 @@
 <%= link_to "New bike", new_bike_path if policy(Bike).new? %>
 
 <div class="cards">
-<p><% @bikes.each do |bike| %></p>
-<p><%= bike.title %></p>
-<p><%= bike.user.first_name %></p>
- <%= link_to 'View This Bike', bike, class: "btn btn-primary" %>
-<% end %>
+  <p><% @bikes.each do |bike| %></p>
+  <p><%= bike.title %></p>
+  <p><%= bike.user.first_name %></p>
+  <%= link_to 'View This Bike', bike, class: "btn btn-primary" %>
+  <% end %>
 </div>
+
