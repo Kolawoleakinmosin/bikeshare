@@ -40,16 +40,17 @@ class BikesController < ApplicationController
   def update
     authorize @bike
     if @bike.update(bike_params)
-      redirect_to @bike, notice: "Bike listing was successfully updated."
+      redirect_to bike_path(@bike), notice: "Bike listing was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
+    # @bike = Bike.find(params[:id])
     authorize @bike
     @bike.destroy
-    redirect_to bikes_url, notice: "Bike was successfully destroyed."
+    redirect_to root_path, notice: "Bike was successfully destroyed.",  status: :see_other
   end
 
   private
