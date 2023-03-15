@@ -1,14 +1,10 @@
 
-<<<<<<< HEAD
 <%= render 'shared/banner' %>
 
-<div class="cards-grid">
-=======
 <div class="container mt-2">
  <h1>Browse bikes:</h1>
  <%= link_to "Add a bike", new_bike_path, class: "btn btn-primary" if policy(Bike).new? %>
 <div class="cards-grid mt-2">
->>>>>>> master
   <% @bikes.each do |bike| %>
   <div class="card p-3 m-3 shadow round">
     <%= cl_image_tag bike.photos.first.key, height: 300, crop: :fill %>
