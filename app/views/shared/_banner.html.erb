@@ -2,9 +2,15 @@
   <div class="container">
     <h1>Rent a bike, explore the city with Bikeshare!</h1>
     <p>Get moving with Bikeshare: Affordable and convenient bike rentals for every traveler!</p>
-    <div class="btn-wrapper">
+    <% if user_signed_in? %>
+      <div class="btn-wrapper d-none">
       <a class="btn btn-flat" href="<%= new_user_session_path %>">Login</a>
       <span class="btn-subtext">No account? Sign up!</span>
+    <% else %>
+      <div class="btn-wrapper">
+      <a class="btn btn-flat" href="<%= new_user_session_path %>">Login</a>
+      <span class="btn-subtext">No account? Sign up!</span>
+    <% end %>
     </div>
   </div>
 </div>
