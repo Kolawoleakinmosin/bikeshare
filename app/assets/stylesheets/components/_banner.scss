@@ -1,11 +1,7 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 60px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
+  padding: 160px 0 150px 0;
 }
 
 .banner h1 {
@@ -19,20 +15,20 @@
 .banner p {
   font-size: 20px;
   color: white;
-  opacity: .9;
+  opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
-.btn-container {
-  display: flex;
+.btn-wrapper {
+  margin-top: 10px;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center right;
 }
 
 .btn-flat {
   color: white;
-  padding: 4px 4px;
-  border-radius: 4px;
+  padding: 12px 65px;
+  border-radius: 5px;
   background: #0D6EFD;
   transition: background 0.3s ease;
 }
@@ -44,6 +40,9 @@
 
 .btn-subtext {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 5px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }

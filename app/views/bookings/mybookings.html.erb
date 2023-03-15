@@ -1,8 +1,19 @@
-<h1>MY BOOKINGS</h1>
 
-<% @bookings.each do |booking| %>
-   <%= cl_image_tag booking.bike.photos.first.key, width: 400, height: 300, crop: :fill %>
-   <h2><%= booking.date_start %></h2>
-  <h2><%= booking.date_end %></h2>
-  <p><%= booking.message %></p>
-<% end %>
+<div class="container mt-2">
+  <h1>My bookings:</h1>
+  <div class="cards-grid mt-2">
+    <% @bookings.each do |booking| %>
+    <div class="card p-3 m-3 shadow round">
+      <%= cl_image_tag booking.bike.photos.first.key, height: 300, crop: :fill %>
+        <div class="m-2">
+          <h5><strong><%= booking.bike.title %></strong></h5>
+          <h6><strong>Start: <%= booking.date_start %></strong></h6>
+          <h6><strong>End: <%= booking.date_end %></strong></h6>
+          <h6>Location: <%= booking.bike.location %></h6>
+          <p><%= booking.message %></p>
+          <%= link_to 'View This Bike', bike_path(booking.bike), class: "btn btn-primary" %>
+        </div>
+    </div>
+    <% end %>
+  </div>
+</div>

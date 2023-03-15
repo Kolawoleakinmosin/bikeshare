@@ -2,17 +2,19 @@
 <%= render 'shared/banner' %>
 
 <div class="container mt-2">
- <h1>Browse bikes:</h1>
- <%= link_to "Add a bike", new_bike_path, class: "btn btn-primary" if policy(Bike).new? %>
+  <div class="justify content">
+    <h1>Browse bikes:</h1>
+    <%= link_to "Add a bike", new_bike_path, class: "btn btn-primary" if policy(Bike).new? %>
+  </div>
   <div class="cards-grid mt-2">
   <% @bikes.each do |bike| %>
-    <div class="card p-3 m-3 shadow round">
+    <div class="card p-2 m-3 shadow round">
       <%= cl_image_tag bike.photos.first.key, height: 300, crop: :fill %>
       <div class="m-2">
         <h5><strong><%= bike.title %></strong></h5>
         <h6>Location: <%= bike.location %></h6>
-        <p><em>Price: <%= bike.price %> EURO</em></p>
-        <%= link_to 'View This Bike', bike, class: "btn btn-primary" %>
+        <p><em>Price: <%= bike.price %>€</em></p>
+        <%= link_to 'View This Bike', bike_path(bike), class: "btn btn-primary" %>
       </div>
     </div>
     <% end %>
