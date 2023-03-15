@@ -1,0 +1,8 @@
+<h1>MY BOOKINGS</h1>
+
+<% @bookings.each do |booking| %>
+   <%= cl_image_tag booking.bike.photos.first.key, width: 400, height: 300, crop: :fill %>
+   <h2><%= booking.date_start %></h2>
+  <h2><%= booking.date_end %></h2>
+  <p><%= booking.message %></p>
+<% end %>
