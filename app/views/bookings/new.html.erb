@@ -3,6 +3,8 @@
 <h1>Book A Bike</h1>
 
 <%= simple_form_for [@bike, @booking] do |f| %>
+  <%= f.input :date_start, as: :date %>
+  <%= f.input :date_end, as: :date %>
   <%= f.input :message %>
   <%= f.button :submit %>
 <% end %>
