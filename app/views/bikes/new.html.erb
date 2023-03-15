@@ -4,7 +4,7 @@
   <%= simple_form_for [@bike] do |f| %>
     <%= f.input :location %>
     <%= f.input :price%>
-    <%= f.input :availability%>
+    <%# <%= f.input :availability%>
     <%= f.input :title%>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.button :submit, class: 'btn btn-primary' %>
