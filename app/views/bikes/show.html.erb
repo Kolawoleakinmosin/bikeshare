@@ -17,9 +17,9 @@
       <div class="card shadow m-2 shadow round p-2" style="width: 23rem;">
           <img class="card-img-top" src="<%= cl_image_path @bike.photos.first.key, height: 300, crop: :fill %>" alt="Card image cap">
           <div class="card-body">
-          <h5 class="card-title"><%= @bike.title %></h5>
+          <h4 class="card-title"><strong><%= @bike.title %></strong></h4>
           <p class="card-text">
-            <p>Location: <%= @bike.location%></p>
+            <p class="mb-3">📍 Location: <%= @bike.location%></p>
             <% if @bike.availability%>
               <p>Available</p>
               <% else %>
@@ -51,6 +51,6 @@
       </div>
     </div>
     </div>
-      <%= link_to "Back to Bikes", root_path, class: "btn btn-primary" %>
+      <%= link_to "Back to Bikes", root_path, class: "btn btn-secondary mt-3" %>
   </div>
 </div>

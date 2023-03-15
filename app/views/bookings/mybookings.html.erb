@@ -1,16 +1,16 @@
 
-<div class="container mt-2">
+<div class="container mt-4">
   <h1>My bookings:</h1>
-  <div class="cards-grid mt-2">
+  <div class="cards-grid mt-5">
     <% @bookings.each do |booking| %>
-    <div class="card p-3 m-3 shadow round">
+    <div class="card p-3 shadow round">
       <%= cl_image_tag booking.bike.photos.first.key, height: 300, crop: :fill %>
         <div class="m-2">
-          <h5><strong><%= booking.bike.title %></strong></h5>
+          <h4 class="mb-3"><strong><%= booking.bike.title %></strong></h4>
           <h6><strong>Start: <%= booking.date_start %></strong></h6>
-          <h6><strong>End: <%= booking.date_end %></strong></h6>
-          <h6>Location: <%= booking.bike.location %></h6>
-          <p><%= booking.message %></p>
+          <h6 class="mb-3"><strong>End: <%= booking.date_end %></strong></h6>
+          <h6 class="mb-3">📍 Location: <%= booking.bike.location %></h6>
+          <p><em>"<%= booking.message %>"</em></p>
           <%= link_to 'View This Bike', bike_path(booking.bike), class: "btn btn-primary" %>
         </div>
     </div>

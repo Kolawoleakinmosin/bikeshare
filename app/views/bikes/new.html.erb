@@ -1,11 +1,12 @@
-<h2>Create a new bike</h2>
 
-
-<%= simple_form_for [@bike] do |f| %>
-  <%= f.input :location %>
-  <%= f.input :price%>
-  <%= f.input :availability%>
-  <%= f.input :title%>
-   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container mt-3 bg-white p-4 round shadow" style="width: 40rem;">
+  <h2 class="mb-3">Create a new bike</h2>
+  <%= simple_form_for [@bike] do |f| %>
+    <%= f.input :location %>
+    <%= f.input :price%>
+    <%= f.input :availability%>
+    <%= f.input :title%>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+</div>
