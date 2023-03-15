@@ -1,6 +1,8 @@
 <h1>This is my home page with all bike listings</h1>
 <%= link_to "New bike", new_bike_path if policy(Bike).new? %>
 
+<%= render 'shared/banner' %>
+
 <div class="cards-grid">
   <% @bikes.each do |bike| %>
   <div class="card-category"
