@@ -33,6 +33,7 @@ gem "devise"
 
 gem "pundit"
 
+gem "geocoder"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

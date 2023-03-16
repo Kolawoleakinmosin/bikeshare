@@ -7,9 +7,15 @@
       <%= cl_image_tag booking.bike.photos.first.key, height: 300, crop: :fill %>
         <div class="m-2">
           <h4 class="mb-3"><strong><%= booking.bike.title %></strong></h4>
+<<<<<<< HEAD
           <h6><strong>Start: <%= booking.start_time.strftime("%b %d, %Y") %></strong></h6>
           <h6 class="mb-3"><strong>End: <%= booking.end_time.strftime("%b %d, %Y") %></strong></h6>
           <h6 class="mb-3">📍 Location: <%= booking.bike.location %></h6>
+=======
+          <h6><strong>Start: <%= booking.date_start %></strong></h6>
+          <h6 class="mb-3"><strong>End: <%= booking.date_end %></strong></h6>
+          <h6 class="mb-3">📍 Address: <%= booking.bike.address %></h6>
+>>>>>>> master
           <p><em>"<%= booking.message %>"</em></p>
           <%= link_to 'View This Bike', bike_path(booking.bike), class: "btn btn-primary" %>
          <%= button_to 'Approve', approve_bike_booking_path(booking.bike, booking), method: :post, class: "btn btn-success" %>

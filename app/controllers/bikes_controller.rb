@@ -4,6 +4,13 @@ class BikesController < ApplicationController
 
   def index
     @bikes = policy_scope(Bike)
+    @markers = @bikes.geocoded.map do |bike|
+      {
+        lat: bike.latitude,
+        lng: bike.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {bike: bike})
+      }
+    end
   end
 
   def mybikes
@@ -60,6 +67,6 @@ class BikesController < ApplicationController
   end
 
   def bike_params
-    params.require(:bike).permit(:title, :location, :price, photos: [])
+    params.require(:bike).permit(:title, :address, :price, photos: [])
   end
 end
