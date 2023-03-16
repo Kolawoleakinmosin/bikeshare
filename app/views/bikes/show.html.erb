@@ -17,25 +17,25 @@
   <div class="row">
     <div class="col-8 d-flex justify-content-center">
       <div class="card shadow m-2 shadow round p-2" style="width: 23rem;">
-          <img class="card-img-top" src="<%= cl_image_path @bike.photos.first.key, height: 300, crop: :fill %>" alt="Card image cap">
+          <img class="card-img-top" src="<%= cl_image_path @bike.photos.first.key, height: 250, crop: :fill %>" alt="Card image cap">
           <div class="card-body">
           <h4 class="card-title"><strong><%= @bike.title %></strong></h4>
           <p class="card-text">
-            <p class="mb-3">📍 Address: <%= @bike.address%></p>
+            <p class="mb-3"><i class="fa-solid fa-location-dot"></i> Address: <%= @bike.address%></p>
             <% if @bike.availability%>
+                <p>Available</p>
+            <% else %>
               <p>Available</p>
-              <% else %>
-              <p>Available</p>
-              <% end %>
+            <% end %>
 
-              <% if current_user %>
-                <% if policy(@bike).destroy? %>
+            <% if current_user %>
+              <% if policy(@bike).destroy? %>
                 <%= button_to "Delete Bike", bike_path(@bike), class: "btn btn-primary mb-3", method: :delete %>
-                <% end %>
-                <% if policy(@bike).edit? %>
-                  <%= link_to "Edit Bike", edit_bike_path(@bike), class: "btn btn-primary"  %>
-                <% end %>
-                <% end %>
+              <% end %>
+              <% if policy(@bike).edit? %>
+                <%= link_to "Edit Bike", edit_bike_path(@bike), class: "btn btn-primary"  %>
+              <% end %>
+            <% end %>
           </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
           <% end %>
           <div class="d-flex justify-content-between mt-3">
               <p><%= @bike.title %></p>
-              <p><%= @bike.price %>€</p>
+              <p>£<%= @bike.price %></p>
             </div>
         </div>
       </div>

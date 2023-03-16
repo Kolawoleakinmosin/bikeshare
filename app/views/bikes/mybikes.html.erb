@@ -4,14 +4,14 @@
   <div class="cards-grid mt-5">
     <% @bikes.each do |bike| %>
       <div class="card p-3 m-3 shadow round" style="width: 27rem;">
-        <%= cl_image_tag bike.photos.first.key, width: 400, height: 300, crop: :fill %>
+        <%= cl_image_tag bike.photos.first.key, height: 250, crop: :fill %>
           <div class="m-2">
           <h4 class="mb-3"><strong><%= bike.title %></strong></h5>
-          <h6 class="mb-3">📍 Address: <%= bike.address %></h6>
-          <p><em>Price: <%= bike.price %>€</em></p>
-          <%= link_to "Go to bike", bike_path(bike), class: "btn btn-primary" %>
+          <h6 class="mb-3"><i class="fa-solid fa-location-dot"></i>  Address: <%= bike.address %></h6>
+          <h5 class="mb-4"><em> £<%= bike.price %></em></h5>
+          <%= button_to "Delete Bike", bike_path(bike), class: "btn btn-primary mb-3", method: :delete %>
+          <%= link_to "Edit Bike", edit_bike_path(bike), class: "btn btn-primary"  %>
         </div>
-
       </div>
       <% end %>
       </div>
