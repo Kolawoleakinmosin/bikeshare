@@ -40,6 +40,7 @@ class ApplicationPolicy
     false
   end
 
+
   class Scope
     def initialize(user, scope)
       @user = user

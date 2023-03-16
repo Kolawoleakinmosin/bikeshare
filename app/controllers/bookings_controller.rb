@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
     authorize @booking
 
     if @booking.save
-      redirect_to bike_path(@bike), notice: 'You Have Successfully Booked This Bike'
+      redirect_to confirmation_path(@booking), notice: 'You Have Successfully Booked This Bike'
     else
       render :new, status: :unprocessable_entity
     end
@@ -41,9 +41,10 @@ class BookingsController < ApplicationController
     authorize @bookings
   end
 
-  # def my_bikes
-  #   @bookings = Bike.joins(:bookings).where(bookings: { user_id: current_user.id })
-  # end
+  def confirmation
+    @booking = Booking.find(params[:id])
+    authorize @booking
+  end
 
   private
 

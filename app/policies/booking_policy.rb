@@ -25,4 +25,8 @@ class BookingPolicy < ApplicationPolicy
   def approve?
     true
   end
+
+  def confirmation?
+    true
+  end
 end
