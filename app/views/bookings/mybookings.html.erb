@@ -1,19 +1,41 @@
 
 <div class="container mt-4">
-  <h1>My bookings:</h1>
+  <h1>My Booked Bikes:</h1>
   <div class="cards-grid mt-5">
     <% @bookings.each do |booking| %>
     <div class="card p-3 shadow round">
       <%= cl_image_tag booking.bike.photos.first.key, height: 300, crop: :fill %>
         <div class="m-2">
           <h4 class="mb-3"><strong><%= booking.bike.title %></strong></h4>
-          <h6><strong>Start: <%= booking.date_start %></strong></h6>
-          <h6 class="mb-3"><strong>End: <%= booking.date_end %></strong></h6>
+          <h6><strong>Start: <%= booking.start_time.strftime("%b %d, %Y") %></strong></h6>
+          <h6 class="mb-3"><strong>End: <%= booking.end_time.strftime("%b %d, %Y") %></strong></h6>
           <h6 class="mb-3">📍 Address: <%= booking.bike.address %></h6>
           <p><em>"<%= booking.message %>"</em></p>
           <%= link_to 'View This Bike', bike_path(booking.bike), class: "btn btn-primary" %>
          <%= button_to 'Approve', approve_bike_booking_path(booking.bike, booking), method: :post, class: "btn btn-success" %>
         </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <h2>Bikes That I Booked: </h2>
+  <div class="cards-grid mt-5">
+      <% @bikes.each do |bike|  %>
+    <div card="p-3 shadow round">
+      <%= cl_image_tag bike.photos.first.key, height: 200, crop: :fill %>
+      <div class="m-2">
+        <h2><%= bike.title %></h2>
+        <h6 class="mb-3">📍 <strong>Pick-Up Point: </strong><%= bike.address %></h6>
+        <% bike.bookings.each do |booking| %>
+        <% if booking.state %>
+        <p>Congratulations, This Bike Has Been Approved For You.</p>
+        <% else %>
+        <p>This Booking is Pending Approval From The Bike Owner. Please Wait</p>
+        <% end %>
+        <% end %>
+      </div>
     </div>
     <% end %>
   </div>
