@@ -9,7 +9,7 @@
           <h4 class="mb-3"><strong><%= booking.bike.title %></strong></h4>
           <h6><strong>Start: <%= booking.date_start %></strong></h6>
           <h6 class="mb-3"><strong>End: <%= booking.date_end %></strong></h6>
-          <h6 class="mb-3">📍 Location: <%= booking.bike.location %></h6>
+          <h6 class="mb-3">📍 Address: <%= booking.bike.address %></h6>
           <p><em>"<%= booking.message %>"</em></p>
           <%= link_to 'View This Bike', bike_path(booking.bike), class: "btn btn-primary" %>
         </div>
