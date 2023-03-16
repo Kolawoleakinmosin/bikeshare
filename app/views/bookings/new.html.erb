@@ -5,7 +5,7 @@
   <h1 class="mb-3">Book A Bike</h1>
   <%= simple_form_for [@bike, @booking], data: { controller: 'flatpickr' } do |f| %>
     <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
-    <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } }  %>
+     <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_time' } %>
     <%= f.input :message %>
     <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>
