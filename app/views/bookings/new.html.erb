@@ -2,9 +2,9 @@
 
 <div class="container mt-3 bg-white p-4 round shadow" style="width: 40rem;">
   <h1 class="mb-3">Book A Bike</h1>
-  <%= simple_form_for [@bike, @booking] do |f| %>
-    <%= f.input :date_start, as: :date %>
-    <%= f.input :date_end, as: :date %>
+  <%= simple_form_for [@bike, @booking], data: { controller: 'flatpickr' } do |f| %>
+    <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+    <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } }  %>
     <%= f.input :message %>
     <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>
