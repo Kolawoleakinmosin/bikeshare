@@ -6,4 +6,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def my_booked_bikes
+    bookings.map do |booking|
+      booking.bike
+    end
+  end
 end
