@@ -3,9 +3,11 @@
 
   <div class="container mt-2">
     <div class="mt-4 mb-3">
-      <h1>Browse bikes:</h1>
-      <%= link_to new_bike_path, class: "btn btn-primary" if policy(Bike).new? do %>
-      <%= icon from fontawesome %>
+      <%# <%= link_to "Add a bike", new_bike_path, class: "btn btn-primary" if policy(Bike).new? %>
+      <% if policy(Bike).new? %>
+        <%= link_to new_bike_path do %>
+          <h2 id="link"><i class="fa-solid fa-plus" id="plus"></i></h2>
+        <% end %>
       <% end %>
     </div>
     <div class="row">
@@ -15,10 +17,10 @@
           <div class="card p-2 m-3 shadow round">
             <%= cl_image_tag bike.photos.first.key, height: 250, crop: :fill %>
             <div class="m-2">
-              <h5><strong><%= bike.title %></strong></h5>
-              <h6>Address: <%= bike.address %></h6>
-              <p><em>Price: <%= bike.price %>€</em></p>
-              <%= link_to 'View This Bike', bike_path(bike), class: "btn btn-primary" %>
+              <h5 class="mb-3"><strong><%= bike.title %></strong></h5>
+              <h6><i class="fa-solid fa-location-dot"></i>  Address: <%= bike.address %></h6>
+              <h5 class="mb-4"><em> £<%= bike.price %></em></h5>
+              <%= link_to 'View', bike_path(bike), class: "btn btn-primary" %>
             </div>
           </div>
           <% end %>
