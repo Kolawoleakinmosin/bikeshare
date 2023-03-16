@@ -21,8 +21,10 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
 
-    if @booking.save
-      redirect_to confirmation_path(@booking), notice: 'You Have Successfully Booked This Bike'
+    if current_user == @bike.user
+      redirect_to @bike, alert: "You cannot book your own bike."
+    elsif @booking.save
+      redirect_to confirmation_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
@@ -43,7 +45,18 @@ class BookingsController < ApplicationController
 
   def confirmation
     @booking = Booking.find(params[:id])
+    @bike = @booking.bike
     authorize @booking
+
+    if params[:confirm_booking]
+      @booking.save
+      if @booking.save
+        redirect_to my_bookings_path, notice: 'You have successfully booked this bike.'
+      else
+        render :new
+      end
+
+    end
   end
 
   private

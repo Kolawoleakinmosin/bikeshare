@@ -40,21 +40,20 @@
       </div>
     </div>
     <div class="col-4">
-      <h3>Book this Bike</h3>
-      <div class="col-m-4 round shadow">
-        <div class="bg-white border p-3 sticky-top round shadow"><% if user_signed_in? %>
+  <% unless current_user == @bike.user %>
+    <h3>Book this Bike</h3>
+    <div class="col-m-4 round shadow">
+      <div class="bg-white border p-3 sticky-top round shadow">
+        <% if user_signed_in? %>
           <p><%= link_to 'Book', new_bike_booking_path(@bike), class: "btn btn-primary w-100" %></p>
-          <% else %>
+        <% else %>
           <p><%= link_to 'Sign-Up', new_user_registration_path, class: "btn btn-primary w-100" %></p>
-          <% end %>
-          <div class="d-flex justify-content-between mt-3">
-              <p><%= @bike.title %></p>
-              <p>£<%= @bike.price %></p>
-            </div>
+        <% end %>
+        <div class="d-flex justify-content-between mt-3">
+          <p><%= @bike.title %></p>
+          <p>£<%= @bike.price %></p>
         </div>
       </div>
     </div>
-    </div>
-      <%= link_to "Back to Bikes", root_path, class: "btn btn-secondary mt-3" %>
-  </div>
+  <% end %>
 </div>

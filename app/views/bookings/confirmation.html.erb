@@ -1,3 +1,11 @@
-<h1>Thank you for choosing BikeShare</h1><br>
-<h2>BOOKING CONFIRMATION</h2>
+<h2>Booking Confirmation</h2>
 
+<p>These Are Your Booking Details:</p>
+  <ul>
+    <h4><li>Bike: <%= @booking.bike.title %></li></h4>
+    <h4><li>Start Date: <%= @booking.start_time.strftime("%b %d, %Y") %></li></h4>
+    <h4><li>End Date: <%= @booking.end_time.strftime("%b %d, %Y") %></li></h4>
+    <h4><li>Total Payment Due:  <%= number_to_currency(@booking.total_sum, unit: "£") %></li></h4>
+  </ul>
+
+  <%= link_to "Make Payment", my_bookings_path, class: "btn btn-success" %>
