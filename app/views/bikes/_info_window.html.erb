@@ -1,3 +1,3 @@
-<h4><%= bike.title %></h4>
-<p><%= bike.address %></p>
-<p><%= bike.price %></p>
+<h4><%= link_to bike.title, bike_path(@bike) %></h4>
+<p><i class="fa-solid fa-location-dot"></i> <strong><%= bike.address %></strong></p>
+<p>Price: <%= bike.price %>€</p>

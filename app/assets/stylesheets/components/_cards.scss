@@ -81,10 +81,16 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .cards-grid-2 {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 .round {
   border-radius: 15px;
+}
+
+#maplayout {
+  height: 100vh;
+  position: sticky;
+  top: 0;
 }

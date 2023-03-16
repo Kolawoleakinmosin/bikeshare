@@ -4,24 +4,32 @@
   <div class="container mt-2">
     <div class="mt-4 mb-3">
       <h1>Browse bikes:</h1>
-      <%= link_to "Add a bike", new_bike_path, class: "btn btn-primary" if policy(Bike).new? %>
-    </div>
-    <div class="cards-grid-2 mt-2">
-      <% @bikes.each do |bike| %>
-      <div class="card p-2 m-3 shadow round">
-        <%= cl_image_tag bike.photos.first.key, height: 300, crop: :fill %>
-        <div class="m-2">
-          <h5><strong><%= bike.title %></strong></h5>
-          <h6>Address: <%= bike.address %></h6>
-          <p><em>Price: <%= bike.price %>€</em></p>
-          <%= link_to 'View This Bike', bike_path(bike), class: "btn btn-primary" %>
-        </div>
-      </div>
+      <%= link_to new_bike_path, class: "btn btn-primary" if policy(Bike).new? do %>
+      <%= icon from fontawesome %>
       <% end %>
     </div>
-    <div style="height: 600px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div class="row">
+      <div class="col-8">
+        <div class="cards-grid-2 mt-2">
+          <% @bikes.each do |bike| %>
+          <div class="card p-2 m-3 shadow round">
+            <%= cl_image_tag bike.photos.first.key, height: 250, crop: :fill %>
+            <div class="m-2">
+              <h5><strong><%= bike.title %></strong></h5>
+              <h6>Address: <%= bike.address %></h6>
+              <p><em>Price: <%= bike.price %>€</em></p>
+              <%= link_to 'View This Bike', bike_path(bike), class: "btn btn-primary" %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-4">
+        <div id="maplayout"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
     </div>
   </div>
