@@ -12,6 +12,7 @@
           <h6 class="mb-3">📍 Address: <%= booking.bike.address %></h6>
           <p><em>"<%= booking.message %>"</em></p>
           <%= link_to 'View This Bike', bike_path(booking.bike), class: "btn btn-primary" %>
+         <%= button_to 'Approve', approve_bike_booking_path(booking.bike, booking), method: :post, class: "btn btn-success" %>
         </div>
     </div>
     <% end %>

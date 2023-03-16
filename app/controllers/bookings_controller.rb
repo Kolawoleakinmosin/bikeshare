@@ -5,11 +5,14 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
-  # def bookings
-  #   # people that have booked my bike
-  #   @bikes = current_user.bikes
-  #   # need to iterate over bikes, get bike and its booking
-  # end
+  def approve
+    @booking = Booking.find(params[:id])
+    # @bike = Bike.find(params[:bike_id])
+    @booking.update(state: true)
+    flash[:success] = "Booking successfully approved"
+    authorize @booking
+    redirect_to booking_path(@booking)
+  end
 
   def create
     @bike = Bike.find(params[:bike_id])
@@ -41,6 +44,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:message, :date_start, :date_end)
+    params.require(:booking).permit(:message, :start_time, :end_time)
   end
 end
