@@ -36,10 +36,14 @@ class BookingsController < ApplicationController
   end
 
   def mybookings
-
     @bookings = Booking.joins(:bike).where(bikes: { user_id: current_user.id })
+    @bikes = current_user.my_booked_bikes.uniq
     authorize @bookings
   end
+
+  # def my_bikes
+  #   @bookings = Bike.joins(:bookings).where(bookings: { user_id: current_user.id })
+  # end
 
   private
 
