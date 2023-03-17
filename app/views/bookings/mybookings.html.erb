@@ -16,7 +16,7 @@
 </div>
 
 <div class="container mt-4">
-  <h1>My Booked Bikes:</h1>
+  <h3>My Booked Bikes:</h3>
     <% if @bookings.empty? %>
     <p>You have not received any Booking for your Bikes yet.</p>
     <% else %>
@@ -43,7 +43,7 @@
 </div>
 
 <div class="container my-4">
-  <h2>Bikes That I Booked: </h2>
+  <h3>Bikes That I Booked: </h3>
   <% if @bikes.empty? %>
   <p>You have not Booked Any Bike yet. Make your first Booking? <%= link_to "Explore", root_path, class: "btn btn-primary" %></p>
   <% else %>
