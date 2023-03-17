@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: "bikes#index"
   get "/my-bikes", to: "bikes#mybikes"
   get "/my-bookings", to: "bookings#mybookings"
+  get "/booking-confirmation/:id", to: "bookings#confirmation", as: "confirmation"
+
 
   resources :bikes, except: [:index] do
     resources :bookings, only: %i[create new] do
@@ -12,4 +14,5 @@ Rails.application.routes.draw do
     end
   end
   resources :bookings, only: %i[destroy]
+
 end
