@@ -1,10 +1,30 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://thulestore.co.za/media/wysiwyg/categories/bike-trailers-front-child-bike-seats/desktop/banner-1.png);">
+  <div class="container">
+    <h1>View bike details</h1>
+    <p>Get moving with Bikeshare: Affordable and convenient bike rentals for every traveler!</p>
+    <% if user_signed_in? %>
+      <div class="btn-wrapper d-none">
+      <a class="btn btn-flat" href="<%= new_user_session_path %>">Login</a>
+      <span class="btn-subtext">No account? Sign up!</span>
+    <% else %>
+      <div class="btn-wrapper">
+      <a class="btn btn-flat" href="<%= new_user_session_path %>">Login</a>
+      <span class="btn-subtext">No account? Sign up!</span>
+    <% end %>
+    </div>
+  </div>
+</div>
 <div class="bg-white m-3">
   <div class="container p-3 ">
     <div class="row">
       <div class="col-md-6">
       <% if user_signed_in? %>
-        <h3>Hi <%= current_user.first_name %>, you have selected <%= @bike.title  %></h3>
+        <% if current_user == @bike.user%>
+            <h3>Hi <%= current_user.first_name %>, Welcome</h3>
+        <% else %>
+            <h3>Hi <%= current_user.first_name %>, you have selected <%= @bike.title  %></h3>
         <p>Please add your dates and confirm all details to proceed with your booking</p>
+        <% end %>
         <% end %>
       </div>
     </div>
@@ -17,44 +37,48 @@
   <div class="row">
     <div class="col-8 d-flex justify-content-center">
       <div class="card shadow m-2 shadow round p-2" style="width: 23rem;">
-          <img class="card-img-top" src="<%= cl_image_path @bike.photos.first.key, height: 300, crop: :fill %>" alt="Card image cap">
+          <img class="card-img-top" src="<%= cl_image_path @bike.photos.first.key, height: 250, crop: :fill %>" alt="Card image cap">
           <div class="card-body">
           <h4 class="card-title"><strong><%= @bike.title %></strong></h4>
           <p class="card-text">
-            <p class="mb-3">📍 Address: <%= @bike.address%></p>
+            <p class="mb-3"><i class="fa-solid fa-location-dot"></i> Address: <%= @bike.address%></p>
             <% if @bike.availability%>
+                <p>Available</p>
+            <% else %>
               <p>Available</p>
-              <% else %>
-              <p>Available</p>
-              <% end %>
+            <% end %>
 
-              <% if current_user %>
-                <% if policy(@bike).destroy? %>
-                <%= button_to "Delete Bike", bike_path(@bike), class: "btn btn-primary mb-3", method: :delete %>
-                <% end %>
-                <% if policy(@bike).edit? %>
-                  <%= link_to "Edit Bike", edit_bike_path(@bike), class: "btn btn-primary"  %>
-                <% end %>
-                <% end %>
+            <% if current_user %>
+              <% if policy(@bike).destroy? %>
+                <%= button_to "Delete", bike_path(@bike), class: "btn btn-primary mb-3", method: :delete %>
+              <% end %>
+              <% if policy(@bike).edit? %>
+                <%= link_to "Edit", edit_bike_path(@bike), class: "btn btn-primary"  %>
+              <% end %>
+            <% end %>
           </div>
       </div>
     </div>
     <div class="col-4">
-      <h3>Book this Bike</h3>
-      <div class="col-m-4 round shadow">
-        <div class="bg-white border p-3 sticky-top round shadow"><% if user_signed_in? %>
+  <% unless current_user == @bike.user %>
+    <h3>Book this Bike</h3>
+    <div class="col-m-4 round shadow">
+      <div class="bg-white border p-3 sticky-top round shadow">
+        <% if user_signed_in? %>
           <p><%= link_to 'Book', new_bike_booking_path(@bike), class: "btn btn-primary w-100" %></p>
-          <% else %>
+        <% else %>
           <p><%= link_to 'Sign-Up', new_user_registration_path, class: "btn btn-primary w-100" %></p>
-          <% end %>
-          <div class="d-flex justify-content-between mt-3">
-              <p><%= @bike.title %></p>
-              <p><%= @bike.price %>€</p>
-            </div>
+        <% end %>
+        <div class="d-flex justify-content-between mt-3">
+          <p><%= @bike.title %></p>
+          <p>£<%= @bike.price %></p>
         </div>
       </div>
     </div>
-    </div>
-      <%= link_to "Back to Bikes", root_path, class: "btn btn-secondary mt-3" %>
-  </div>
+  <% end %>
+</div>
+<div class="mr-4">
+  <%= link_to root_path do %>
+    <h2 class="p-4"><i class="fa-solid fa-left-long" id="plus"></i></h2>
+  <% end %>
 </div>
