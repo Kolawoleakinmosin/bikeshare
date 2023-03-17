@@ -42,3 +42,12 @@ p {
 body {
   color: #040816;
 }
+
+#cancel {
+  color: red;
+  font-size: 35px;
+
+  &:hover {
+    font-size: 40px;
+  }
+}

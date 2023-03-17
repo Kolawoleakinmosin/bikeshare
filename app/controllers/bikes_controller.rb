@@ -1,9 +1,18 @@
 class BikesController < ApplicationController
+  include PgSearch::Model
+
   before_action :set_bike, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
 
   def index
     @bikes = policy_scope(Bike)
+
+    if params[:search].present?
+      @bikes = Bike.search_by_title_and_address(params[:search])
+    else
+      @bikes = policy_scope(Bike)
+    end
+
     @markers = @bikes.geocoded.map do |bike|
       {
         lat: bike.latitude,
@@ -12,6 +21,9 @@ class BikesController < ApplicationController
       }
     end
   end
+
+
+
 
   def mybikes
     @bikes = current_user.bikes
