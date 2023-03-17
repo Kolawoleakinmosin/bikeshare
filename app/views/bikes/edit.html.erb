@@ -1,10 +1,17 @@
-<h2>Update Bike</h2>
 
-<%= simple_form_for @bike do |f| %>
-<%= f.input :address %>
-<%= f.input :price %>
-<%= f.input :availability %>
-<%= f.input :title %>
-<%# <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-<%= f.button :submit %>
-<% end %>
+  <div class="m-4">
+    <%= link_to root_path do %>
+      <h2 class="p-1"><i class="fa-solid fa-left-long" id="plus"></i></h2>
+    <% end %>
+  </div>
+<div class="container mt-3 bg-white p-4 round shadow" style="width: 50rem;">
+  <h2 class="mb-3">Update Bike</h2>
+    <%= simple_form_for @bike do |f| %>
+    <%= f.input :address %>
+    <%= f.input :price %>
+    <%= f.input :availability %>
+    <%= f.input :title %>
+    <%# <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+</div>

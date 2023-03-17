@@ -1,7 +1,24 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://static.giant-bicycles.com/Images/PageBuilder/PageElements/Banner_E-BikeProducts_MMT_WebsiteDesign_Brand_1595881505.jpg);">
+  <div class="container">
+    <h1>Bookings</h1>
+    <p>Get moving with Bikeshare: Affordable and convenient bike rentals for every traveler!</p>
+    <% if user_signed_in? %>
+      <div class="btn-wrapper d-none">
+      <a class="btn btn-flat" href="<%= new_user_session_path %>">Login</a>
+      <span class="btn-subtext">No account? Sign up!</span>
+    <% else %>
+      <div class="btn-wrapper">
+      <a class="btn btn-flat" href="<%= new_user_session_path %>">Login</a>
+      <span class="btn-subtext">No account? Sign up!</span>
+    <% end %>
+    </div>
+  </div>
+</div>
 
-<div class="container mt-4">
-  <h1>My Booked Bikes:</h1>
-  <div class="cards-grid mt-5">
+
+<div class="container mb-4">
+  <h4 class="mt-4">My Booked Bikes:</h4>
+  <div class="cards-grid my-3">
     <% @bookings.each do |booking| %>
     <div class="card p-3 shadow round">
       <%= cl_image_tag booking.bike.photos.first.key, height: 250, crop: :fill %>
@@ -11,7 +28,7 @@
           <h6 class="mb-3"><strong>End: <%= booking.end_time.strftime("%b %d, %Y") %></strong></h6>
           <p><i class="fa-solid fa-location-dot"></i>  Address: <%= booking.bike.address %></p>
           <p><em>"<%= booking.message %>"</em></p>
-         <%= button_to 'Approve', approve_bike_booking_path(booking.bike, booking), method: :post, class: "btn btn-success" %>
+         <%= button_to 'Approve', approve_bike_booking_path(booking.bike, booking), method: :post, class: "btn btn-info" %>
         </div>
     </div>
     <% end %>
@@ -19,8 +36,8 @@
 </div>
 
 <div class="container my-4">
-  <h2>Bikes That I Booked: </h2>
-  <div class="cards-grid mt-5">
+  <h4 class="mt-5">Bikes That I've Booked: </h4>
+  <div class="cards-grid my-3">
       <% @bikes.each do |bike|  %>
     <div class="card p-3 shadow round">
       <%= cl_image_tag bike.photos.first.key, height: 250, crop: :fill %>
@@ -39,4 +56,9 @@
     </div>
     <% end %>
   </div>
+</div>
+<div class="mr-4">
+  <%= link_to root_path do %>
+    <h2 class="p-4"><i class="fa-solid fa-left-long" id="plus"></i></h2>
+  <% end %>
 </div>
