@@ -23,9 +23,9 @@
     <div class="card p-3 shadow round">
       <%= cl_image_tag booking.bike.photos.first.key, height: 250, crop: :fill %>
         <div class="m-2">
-          <h5 class="mb-3"><strong><%= booking.bike.title %></strong></h5>
-          <h6><strong>Start: <%= booking.start_time.strftime("%b %d, %Y") %></strong></h6>
-          <h6 class="mb-3"><strong>End: <%= booking.end_time.strftime("%b %d, %Y") %></strong></h6>
+          <h5 class="mb-3"><%= booking.bike.title %></h5>
+          <p><strong>Start: <%= booking.start_time.strftime("%b %d, %Y") %></strong></p>
+          <p class="mb-3"><strong>End: <%= booking.end_time.strftime("%b %d, %Y") %></strong></p>
           <p><i class="fa-solid fa-location-dot"></i>  Address: <%= booking.bike.address %></p>
           <p><em>"<%= booking.message %>"</em></p>
          <%= button_to 'Approve', approve_bike_booking_path(booking.bike, booking), method: :post, class: "btn btn-info" %>
@@ -42,8 +42,8 @@
     <div class="card p-3 shadow round">
       <%= cl_image_tag bike.photos.first.key, height: 250, crop: :fill %>
       <div class="m-2">
-        <h5 class="mb-3"><strong><%= bike.title %></strong></h5>
-        <h6><i class="fa-solid fa-location-dot"></i> <strong>Pick-Up Point: </h6>
+        <h5 class="mb-3"><%= bike.title %></h5>
+        <p><i class="fa-solid fa-location-dot"></i> <strong>Pick-Up Point: </p>
         <p class="mb-6"></strong><%= bike.address %></p>
         <% bike.bookings.each do |booking| %>
           <% if booking.state %>
