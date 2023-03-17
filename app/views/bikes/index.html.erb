@@ -1,7 +1,7 @@
   <%= render 'shared/banner' %>
 
   <div class="container mt-2">
-    <div class="mt-4 mb-3">
+    <div class="mt-3">
       <%# <%= link_to "Add a bike", new_bike_path, class: "btn btn-primary" if policy(Bike).new? %>
         <%= form_tag root_path, method: :get do %>
          <%= text_field_tag :search, params[:search], placeholder: "Search by title or address" %>
@@ -18,13 +18,13 @@
     </div>
     <div class="row">
       <div class="col-8">
-        <div class="cards-grid-2 mt-2">
+        <div class="cards-grid-2 mt-1">
           <% @bikes.each do |bike| %>
           <div class="card p-2 m-3 shadow round">
             <%= cl_image_tag bike.photos.first.key, height: 250, crop: :fill %>
             <div class="m-2">
-              <h5 class="mb-3"><strong><%= bike.title %></strong></h5>
-              <h6><i class="fa-solid fa-location-dot"></i>  Address: <%= bike.address %></h6>
+              <h5 class="mb-3"><%= bike.title %></h5>
+              <p><i class="fa-solid fa-location-dot"></i>  Address: <%= bike.address %></p>
               <h5 class="mb-4"><em> £<%= bike.price %></em></h5>
               <%= link_to 'View', bike_path(bike), class: "btn btn-primary" %>
             </div>

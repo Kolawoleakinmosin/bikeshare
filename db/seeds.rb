@@ -26,12 +26,18 @@ puts "destroying all bikes"
 Bike.destroy_all
 
 puts "adding bikes"
-bike1 = Bike.create!(title: "Electric bike", price: 8, address: "4 Farringdon Ln, London, EC1R 0EF, United Kingdom", user: User.first)
-bike2 = Bike.create!(title: "City slicker", price: 3, address: "108-100 Hampstead Rd, London, NW1 2LS, United Kingdom", user: User.second)
-bike3 = Bike.create!(title: "Lovely park bike", price: 2, address: "28 Craven Terrace, London, W2 3EL, United Kingdom", user: User.third)
-bike4 = Bike.create!(title: "Mountain bike", price: 3, address: "180 Borough High St, London, SE1 1AP, United Kingdom", user: User.last)
+bike1 = Bike.new(title: "Electric bike", price: 8, address: "4 Farringdon Ln, London, EC1R 0EF, United Kingdom", user: User.first)
+bike2 = Bike.new(title: "City slicker", price: 3, address: "108-100 Hampstead Rd, London, NW1 2LS, United Kingdom", user: User.second)
+bike3 = Bike.new(title: "Lovely park bike", price: 2, address: "28 Craven Terrace, London, W2 3EL, United Kingdom", user: User.third)
+bike4 = Bike.new(title: "Mountain bike", price: 3, address: "180 Borough High St, London, SE1 1AP, United Kingdom", user: User.last)
 bike1.photos.attach(io: File.open(file), filename: "bike1.jpg", content_type: "image/png")
 bike2.photos.attach(io: File.open(file2), filename: "bike2.jpg", content_type: "image/png")
 bike3.photos.attach(io: File.open(file3), filename: "bike3.jpg", content_type: "image/png")
 bike4.photos.attach(io: File.open(file4), filename: "bike4.jpg", content_type: "image/png")
+
+bike1.save!
+bike2.save!
+bike3.save!
+bike4.save!
+
 puts "Bikes created"

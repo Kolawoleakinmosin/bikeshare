@@ -39,7 +39,7 @@
       <div class="card shadow m-2 shadow round p-2" style="width: 23rem;">
           <img class="card-img-top" src="<%= cl_image_path @bike.photos.first.key, height: 250, crop: :fill %>" alt="Card image cap">
           <div class="card-body">
-          <h4 class="card-title"><strong><%= @bike.title %></strong></h4>
+          <h5 class="card-title"><%= @bike.title %></h5>
           <p class="card-text">
             <p class="mb-3"><i class="fa-solid fa-location-dot"></i> Address: <%= @bike.address%></p>
             <% if @bike.availability%>
@@ -61,7 +61,7 @@
     </div>
     <div class="col-4">
   <% unless current_user == @bike.user %>
-    <h3>Book this Bike</h3>
+    <h5>Book this Bike</h5>
     <div class="col-m-4 round shadow">
       <div class="bg-white border p-3 sticky-top round shadow">
         <% if user_signed_in? %>
