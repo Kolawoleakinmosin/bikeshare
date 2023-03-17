@@ -3,8 +3,12 @@
     <div class="row">
       <div class="col-md-6">
       <% if user_signed_in? %>
-        <h3>Hi <%= current_user.first_name %>, you have selected <%= @bike.title  %></h3>
+        <% if current_user == @bike.user%>
+            <h3>Hi <%= current_user.first_name %>, Welcome</h3>
+        <% else %>
+            <h3>Hi <%= current_user.first_name %>, you have selected <%= @bike.title  %></h3>
         <p>Please add your dates and confirm all details to proceed with your booking</p>
+        <% end %>
         <% end %>
       </div>
     </div>

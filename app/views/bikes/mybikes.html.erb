@@ -1,6 +1,10 @@
 
 <div class="container mt-4">
   <h1 class="mt-3">My Bikes</h1>
+  <% if @bikes.empty? %>
+  <p>You don't have any Bikes on BikeShare, You can Get Started <%= link_to new_bike_path do %><h2 id="link"><i class="fa-solid fa-plus"></i></h2></p>
+  <% end %>
+  <% else %>
   <div class="cards-grid mt-5">
     <% @bikes.each do |bike| %>
       <div class="card p-3 m-3 shadow round" style="width: 27rem;">
@@ -15,5 +19,6 @@
       </div>
       <% end %>
       </div>
+  <% end %>
     <%= link_to "Go back to bikes", root_path, class: "btn btn-secondary" %>
 </div>

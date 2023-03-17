@@ -49,9 +49,8 @@ class BookingsController < ApplicationController
     authorize @booking
 
     if params[:confirm_booking]
-      @booking.save
       if @booking.save
-        redirect_to my_bookings_path, notice: 'You have successfully booked this bike.'
+        redirect_to my_bookings_path, notice: 'You have Approved this bike.'
       else
         render :new
       end
