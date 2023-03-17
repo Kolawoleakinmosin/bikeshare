@@ -1,3 +1,19 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://thulestore.co.za/media/wysiwyg/categories/bike-trailers-front-child-bike-seats/desktop/banner-1.png);">
+  <div class="container">
+    <h1>View bike details</h1>
+    <p>Get moving with Bikeshare: Affordable and convenient bike rentals for every traveler!</p>
+    <% if user_signed_in? %>
+      <div class="btn-wrapper d-none">
+      <a class="btn btn-flat" href="<%= new_user_session_path %>">Login</a>
+      <span class="btn-subtext">No account? Sign up!</span>
+    <% else %>
+      <div class="btn-wrapper">
+      <a class="btn btn-flat" href="<%= new_user_session_path %>">Login</a>
+      <span class="btn-subtext">No account? Sign up!</span>
+    <% end %>
+    </div>
+  </div>
+</div>
 <div class="bg-white m-3">
   <div class="container p-3 ">
     <div class="row">
@@ -34,10 +50,10 @@
 
             <% if current_user %>
               <% if policy(@bike).destroy? %>
-                <%= button_to "Delete Bike", bike_path(@bike), class: "btn btn-primary mb-3", method: :delete %>
+                <%= button_to "Delete", bike_path(@bike), class: "btn btn-primary mb-3", method: :delete %>
               <% end %>
               <% if policy(@bike).edit? %>
-                <%= link_to "Edit Bike", edit_bike_path(@bike), class: "btn btn-primary"  %>
+                <%= link_to "Edit", edit_bike_path(@bike), class: "btn btn-primary"  %>
               <% end %>
             <% end %>
           </div>
@@ -59,5 +75,10 @@
         </div>
       </div>
     </div>
+  <% end %>
+</div>
+<div class="mr-4">
+  <%= link_to root_path do %>
+    <h2 class="p-4"><i class="fa-solid fa-left-long" id="plus"></i></h2>
   <% end %>
 </div>
