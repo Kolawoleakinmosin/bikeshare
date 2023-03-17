@@ -6,7 +6,10 @@
       <%# <%= link_to "Add a bike", new_bike_path, class: "btn btn-primary" if policy(Bike).new? %>
       <% if policy(Bike).new? %>
         <%= link_to new_bike_path do %>
-          <h2 id="link"><i class="fa-solid fa-plus" id="plus"></i></h2>
+          <div class="d-flex p-2">
+            <h2 class="p-1"><i class="fa-solid fa-plus" id="plus"></i></h2>
+            <i class="fa-solid fa-bicycle"></i>
+          </div>
         <% end %>
       <% end %>
     </div>

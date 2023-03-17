@@ -1,13 +1,17 @@
-
+<div class="m-4">
+  <%= link_to root_path do %>
+    <h2 class="p-1"><i class="fa-solid fa-left-long" id="plus"></i></h2>
+  <% end %>
+</div>
 <div class="container mt-3 bg-white p-4 round shadow" style="width: 40rem;">
   <h2 class="mb-3">Create a new bike</h2>
   <%= simple_form_for [@bike] do |f| %>
-    <%= f.input :address,
+    <%= f.input :address, class: "geocoder",
       input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
       wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
-    <%= f.input :price%>
+    <%= f.input :price %>
     <%# <%= f.input :availability%>
-    <%= f.input :title%>
+    <%= f.input :title %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>
