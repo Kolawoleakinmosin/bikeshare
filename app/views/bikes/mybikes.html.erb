@@ -15,7 +15,7 @@
   </div>
 </div>
 <div class="container mt-4">
-  <h1 class="mt-3">My Bikes</h1>
+  <h4 class="mt-3">My Bikes</h4>
   <% if @bikes.empty? %>
   <p>You don't have any Bikes on BikeShare, You can Get Started <%= link_to new_bike_path do %><h2 id="link"><i class="fa-solid fa-plus"></i></h2></p>
   <% end %>
@@ -38,8 +38,6 @@
       </div>
       </div>
   <% end %>
-    <%= link_to "Go back to bikes", root_path, class: "btn btn-secondary" %>
-
     <% end %>
   </div>
 </div>
